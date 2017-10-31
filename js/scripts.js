@@ -17,6 +17,10 @@ Contact.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
 }
 
+Address.prototype.fullAddress = function() {
+  return this.street + ", " + this.city + ", " + this.state;
+}
+
 // User Interface
 $(document).ready(function() {
   //if the user wants to add two different addresses, they'll need to be able to hit the "Another Address" button to receive more address form fields before submitting the form
@@ -62,7 +66,7 @@ $(document).ready(function() {
       $(".last-name").text(newContact.lastName);
       $("ul#addresses").text("");
       newContact.addresses.forEach(function(address) {
-        $("ul#addresses").append("<li>" + address.street + ", " + address.city + " " + address.state + "</li>");
+        $("ul#addresses").append("<li>" + address.fullAddress() + "</li>");
       });
     });
 
